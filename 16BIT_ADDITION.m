@@ -1,0 +1,36 @@
+ORG 00H
+LJMP MAIN
+ORG 100H
+MAIN:
+CALL ADD16
+HERE:
+SJMP HERE
+ORG 130H
+
+ADD16:
+	MOV R0,#60h
+	INC R0
+	MOV A,@R0
+	INC R0
+	INC R0
+	add A, @R0
+	MOV 65h, A
+	DEC R0
+	MOV A,@R0
+	DEC R0
+	DEC R0
+	addc A, @R0
+	mov 66h, A
+	
+	jnc down
+	inc r1
+	down: mov 64h,r1
+RET
+END
+	
+
+
+
+
+
+
